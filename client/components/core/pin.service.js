@@ -21,7 +21,7 @@
         	.success(function(pin){
  				svc.pins.push(pin);
         		deferred.resolve(pin);
-        	});
+        	})
         	.error(function(err){
         		deferred.reject(err);
         	});
