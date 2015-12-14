@@ -31,7 +31,7 @@ exports.show = function(req, res) {
 
 // Creates a new thing in the DB.
 exports.create = function(req, res) {
-  var user=req.user.email;
+  var user=req.user._id;
   req.body.user=user;
   Pin.create(req.body, function(err, pin) {
     if(err) { return handleError(res, err); }

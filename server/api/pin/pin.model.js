@@ -2,10 +2,12 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
+  var ObjectIdSchema = Schema.ObjectId;
+    var ObjectId = mongoose.Types.ObjectId;
 
 var PinSchema = new Schema({
   title: String,
-  user: String,
+  user: {type: ObjectIdSchema,ref:'User'},
   imageUrl: String
 });
 
