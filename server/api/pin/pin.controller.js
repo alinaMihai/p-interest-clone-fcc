@@ -24,23 +24,26 @@ exports.index = function(req, res) {
 
 // Get a single thing
 exports.show = function(req, res) {
-  Pin.findById(req.params.id, function (err, pin) {
+  var query=Pin.find({});
+  query.where('user',req.params.user);
+
+  query.exec(function (err, pins) {
     if(err) { return handleError(res, err); }
     if(!pin) { return res.status(404).send('Not Found'); }
-    return res.json(pin);
+    return res.json(pins);
   });
 };
 
 // Creates a new thing in the DB.
 exports.create = function(req, res) {
-  
   req.body.user=req.user.email;
-
   Pin.create(req.body, function(err, pin) {
     if(err) { return handleError(res, err); }
     return res.status(201).json(pin);
   });
 };
+
+
 function handleError(res, err) {
   return res.status(500).send(err);
 }

@@ -12,6 +12,7 @@
     	this.pins=[];
         this.addPin = addPin;
         this.getAllPins=getAllPins;
+        this.getUserPins=getUserPins;
         var svc=this;
         ////////////////
 
@@ -32,11 +33,23 @@
 
         function getAllPins(){
             var deferred=$q.defer();
-            $http.get('api/pins')
+            $http.get('/api/pins')
             .success(function(pins){
                 svc.pins=pins;
                 deferred.resolve(pins);
             }).error(function(err){
+                deferred.reject(err);
+            });
+            return deferred.promise;
+        }
+
+        function getUserPins(user){
+            var deferred=$q.defer();
+            $http.get('/api/pins/'+user)
+            .success(function(pins){
+                deferred.resolve(pins);
+            })
+            .error(function(err){
                 deferred.reject(err);
             });
             return deferred.promise;
