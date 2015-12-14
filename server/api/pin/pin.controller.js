@@ -4,8 +4,7 @@
  * POST    /pins                ->  create
  * GET     /pins/:user          ->  show
  * GET     /pins/myPins         ->  myPins
- * PUT     /things/:id          ->  update
- * DELETE  /things/:id          ->  destroy
+ * DELETE  /pins/:id            ->  destroy
  */
 
 'use strict';
@@ -53,6 +52,21 @@ exports.myPins=function(req,res){
     return res.json(pins);
   });
 }
+
+// Deletes a pin from the DB.
+exports.destroy = function(req, res) {
+  var query=Pin.find({});
+  query.where('user',req.user.email);
+  query.where('_id',req.params.id);
+  query.exec(function (err, pin) {
+    if(err) { return handleError(res, err); }
+    if(!pin) { return res.status(404).send('Not Found'); }
+    pin.remove(function(err) {
+      if(err) { return handleError(res, err); }
+      return res.status(204).send('No Content');
+    });
+  });
+};
 
 function handleError(res, err) {
   return res.status(500).send(err);

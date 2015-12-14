@@ -14,6 +14,7 @@
         this.getAllPins=getAllPins;
         this.getUserPins=getUserPins;
         this.getMyPins=getMyPins;
+        this.deletePin=deletePin;
         var svc=this;
         ////////////////
 
@@ -65,6 +66,18 @@
                 deferred.reject(err);
             });
             return deferred.promise;
+        }
+
+        function deletePin(id){
+             var deferred=$q.defer();
+                $http.delete('api/pins/'+id)
+                .success(function(){
+                    deferred.resolve();
+                })
+                .error(function(err){
+                    deferred.reject(err);
+                });
+                return deferred.promise;   
         }
     }
 
