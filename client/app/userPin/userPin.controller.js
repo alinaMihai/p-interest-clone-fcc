@@ -12,12 +12,13 @@
         var vm = this;
         vm.userPins=[];
         vm.handleImageError=handleImageError;
+        vm.user=$stateParams.user;
         activate();
 
         ////////////////
 
         function activate() {
-        	PinService.getUserPins($stateParams.user).then(function(pins){
+        	PinService.getUserPins(vm.user).then(function(pins){
         	 	vm.userPins=pins;
         	});
         }

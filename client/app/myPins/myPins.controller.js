@@ -27,7 +27,7 @@
                     if(newVal!==oldVal){
                         vm.myPins.push(newVal);
                     }
-                });
+               });
         }
 
         function deletePin(pin){

@@ -2,26 +2,26 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>Funny Animals Images</h1>
+    <h1>Link Interest</h1>
   </div>
 </header>
 
-<ul class="dynamic-grid" angular-grid="vm.pins" 
-grid-width="300" gutter-size="10" angular-grid-id="gallery" 
-refresh-on-img-load="false">
-   <li data-ng-repeat="pin in vm.pins" class="grid">
-     <img ng-src="{{pin.imageUrl}}" alt="pinImage" class="grid-img" ng-error="vm.handleImageError(pin)">
-     <p>{{pin.title}}</p>
-     <p><a ui-sref="UserPins({user:pin.user})">{{pin.user}}</a></p>
-   </li>
-</ul>
-
-
+<div class="container">
+  <ul class="dynamic-grid" angular-grid="vm.pins"
+    grid-width="300" gutter-size="10" angular-grid-id="gallery"
+    refresh-on-img-load="true">
+    <li data-ng-repeat="pin in vm.pins" class="grid">
+      <img ng-src="{{pin.imageUrl}}" alt="pinImage" class="grid-img" ng-error="vm.handleImageError(pin)">
+      <p><strong>{{pin.title}}</strong></p>
+      <p><a ui-sref="UserPins({user:pin.user})">{{pin.user}}</a></p>
+    </li>
+  </ul>
+</div>
 
 <footer class="footer">
   <div class="container">
-    <p>Angular Fullstack v2.1.1 |
-      <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-      <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+    <p> PInterestClone 2015 |
+      <a href="https://twitter.com/AlinaMihai90">@AlinaMihai90</a> |
+      <a href="https://github.com/alinaMihai/p-interest-clone-fcc">Github</a> | powered by Angular Fullstack v2.1.1</p>
     </div>
   </footer>

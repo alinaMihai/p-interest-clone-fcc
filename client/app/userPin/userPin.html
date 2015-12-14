@@ -1,14 +1,24 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div class="container">
 	<div class="row">
+		<h1 class="text-center title">The pins of {{vm.user}}</h1>
+	</div>
+	<div class="row">
 		<ul class="dynamic-grid" angular-grid="vm.userPins"
 			grid-width="300" gutter-size="10" 
-			refresh-on-img-load="false">
+			refresh-on-img-load="true">
 			<li data-ng-repeat="pin in vm.userPins" class="grid">
 				<img ng-src="{{pin.imageUrl}}" alt="pinImage" class="grid-img" ng-error="vm.handleImageError(pin)">
-				<p>{{pin.title}}</p>
+				<p><strong>{{pin.title}}</strong></p>
 				<p>{{pin.user}}</p>
 			</li>
 		</ul>
 	</div>
 </div>
+<footer class="footer">
+  <div class="container">
+    <p> PInterestClone 2015 |
+      <a href="https://twitter.com/AlinaMihai90">@AlinaMihai90</a> |
+      <a href="https://github.com/alinaMihai/p-interest-clone-fcc">Github</a> | powered by Angular Fullstack v2.1.1</p>
+    </div>
+  </footer>
