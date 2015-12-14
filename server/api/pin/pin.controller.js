@@ -36,7 +36,11 @@ exports.show = function(req, res) {
 
 // Creates a new pin in the DB.
 exports.create = function(req, res) {
-  req.body.user=req.user.email;
+  console.log(req);
+  var user=req.user.email?req.user.email:req.user.twitter.screen_name;
+  console.log(req.user);
+  console.log(req.user.email);
+  req.body.user=user;
   Pin.create(req.body, function(err, pin) {
     if(err) { return handleError(res, err); }
     return res.status(201).json(pin);
@@ -44,8 +48,9 @@ exports.create = function(req, res) {
 };
 
 exports.myPins=function(req,res){
+  var user=req.user.email?req.user.email:req.user.twitter.screen_name;
   var query=Pin.find({});
-  query.where('user',req.user.email);
+  query.where('user',user);
   query.exec(function(err,pins){
     if(err) { return handleError(res, err); }
     if(!pins) { return res.status(404).send('Not Found'); }
