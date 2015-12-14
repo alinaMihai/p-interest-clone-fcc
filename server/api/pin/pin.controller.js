@@ -29,7 +29,7 @@ exports.show = function(req, res) {
 
   query.exec(function (err, pins) {
     if(err) { return handleError(res, err); }
-    if(!pin) { return res.status(404).send('Not Found'); }
+    if(!pins) { return res.status(404).send('Not Found'); }
     return res.json(pins);
   });
 };

@@ -12,7 +12,7 @@ refresh-on-img-load="false">
    <li data-ng-repeat="pin in vm.pins" class="grid">
      <img ng-src="{{pin.imageUrl}}" alt="pinImage" class="grid-img">
      <p>{{pin.title}}</p>
-     <p>{{pin.user}}</p>
+     <p><a ui-sref="UserPins({user:pin.user})">{{pin.user}}</a></p>
    </li>
 </ul>
 
