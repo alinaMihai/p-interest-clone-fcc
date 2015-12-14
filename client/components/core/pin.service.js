@@ -13,6 +13,7 @@
         this.addPin = addPin;
         this.getAllPins=getAllPins;
         this.getUserPins=getUserPins;
+        this.getMyPins=getMyPins;
         var svc=this;
         ////////////////
 
@@ -46,6 +47,17 @@
         function getUserPins(user){
             var deferred=$q.defer();
             $http.get('/api/pins/'+user)
+            .success(function(pins){
+                deferred.resolve(pins);
+            })
+            .error(function(err){
+                deferred.reject(err);
+            });
+            return deferred.promise;
+        }
+        function getMyPins(){
+            var deferred=$q.defer();
+            $http.get('api/pins')
             .success(function(pins){
                 deferred.resolve(pins);
             })
