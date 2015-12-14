@@ -57,7 +57,7 @@
         }
         function getMyPins(){
             var deferred=$q.defer();
-            $http.get('api/pins')
+            $http.get('api/pins/myPins')
             .success(function(pins){
                 deferred.resolve(pins);
             })

@@ -8,7 +8,13 @@ angular.module('pInterestCloneApp')
     function ($scope, $location, Auth,PinService,$modal,toastr) {
     $scope.menu = [{
       'title': 'Home',
-      'link': '/'
+      'link': '/',
+      'state':'main'
+    },
+    {
+      'title':'My Pins',
+      'link':'/myPins/',
+      'state':'MyPins'
     }];
     $scope.openAddPinModal=openAddPinModal;
     $scope.isCollapsed = true;

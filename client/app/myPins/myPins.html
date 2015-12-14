@@ -1,0 +1,14 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container">
+	<div class="row">
+		<ul class="dynamic-grid" angular-grid="vm.myPins"
+			grid-width="300" gutter-size="10" 
+			refresh-on-img-load="false">
+			<li data-ng-repeat="pin in vm.myPins" class="grid">
+				<img ng-src="{{pin.imageUrl}}" alt="pinImage" class="grid-img">
+				<p>{{pin.title}}</p>
+				<p>{{pin.user}}</p>
+			</li>
+		</ul>
+	</div>
+</div>
