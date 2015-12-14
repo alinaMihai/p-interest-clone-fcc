@@ -5,10 +5,10 @@
         .module('pInterestCloneApp')
         .service('PinService', PinService);
 
-    PinService.$inject = ['$http','$q'];
+    PinService.$inject = ['$http','$q','toastr'];
 
     /* @ngInject */
-    function PinService($http,$q) {
+    function PinService($http,$q,toastr) {
     	this.pins=[];
         this.addPin = addPin;
         this.getAllPins=getAllPins;
@@ -25,6 +25,7 @@
         	.success(function(pin){
  				svc.pins.push(pin);
         		deferred.resolve(pin);
+                toastr.success('Pin added successfully','Success');
         	})
         	.error(function(err){
         		deferred.reject(err);
@@ -73,6 +74,7 @@
                 $http.delete('api/pins/'+id)
                 .success(function(){
                     deferred.resolve();
+                    toastr.success('Pin deleted successfully','Success');
                 })
                 .error(function(err){
                     deferred.reject(err);

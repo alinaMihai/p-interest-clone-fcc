@@ -8,6 +8,7 @@
 				<img ng-src="{{pin.imageUrl}}" alt="pinImage" class="grid-img">
 				<p>{{pin.title}}</p>
 				<p>{{pin.user}}</p>
+				<span class="glyphicon glyphicon-remove" ng-click="vm.deletePin(pin)"></span>
 			</li>
 		</ul>
 	</div>

@@ -55,7 +55,7 @@ exports.myPins=function(req,res){
 
 // Deletes a pin from the DB.
 exports.destroy = function(req, res) {
-  var query=Pin.find({});
+  var query=Pin.findOne({});
   query.where('user',req.user.email);
   query.where('_id',req.params.id);
   query.exec(function (err, pin) {
