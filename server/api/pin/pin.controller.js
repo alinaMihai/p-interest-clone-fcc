@@ -36,10 +36,7 @@ exports.show = function(req, res) {
 
 // Creates a new pin in the DB.
 exports.create = function(req, res) {
-  console.log(req);
   var user=req.user.email?req.user.email:req.user.twitter.screen_name;
-  console.log(req.user);
-  console.log(req.user.email);
   req.body.user=user;
   Pin.create(req.body, function(err, pin) {
     if(err) { return handleError(res, err); }
