@@ -1,0 +1,25 @@
+<div class="modal-header">
+	<h3 class="modal-title">Add Pin</h3>
+</div>
+<div class="modal-body">
+	
+	<form name="pinForm" >
+		<div class="form-group" ng-class="{'has-error':pinForm.title.$invalid && pinForm.title.$dirty}">
+			<label for="title">Title</label>
+			<input type="text" name="title" ng-model="modalCtrl.pin.title" class="form-control" required>
+		</div>
+		<div class="form-group" ng-class="{'has-error':pinForm.url.$invalid && pinForm.url.$dirty}">
+			<label for="url">Image URL</label>
+			<input type="text" ng-model='modalCtrl.pin.imageUrl' name="url" class="form-control" required>
+		</div>
+		<div class="form-group preview" ng-if="modalCtrl.pin.imageUrl">
+			<img ng-src="{{modalCtrl.pin.imageUrl}}" alt="pinImage">
+		</div>
+		
+	</form>
+	
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="modalCtrl.ok()" ng-disabled="pinForm.$invalid">Add Pin</button>
+	<button class="btn btn-warning" type="button" ng-click="modalCtrl.cancel()">Cancel</button>
+</div>

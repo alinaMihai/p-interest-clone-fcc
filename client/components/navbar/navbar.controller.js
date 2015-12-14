@@ -4,8 +4,8 @@
 'use strict';
 
 angular.module('pInterestCloneApp')
-  .controller('NavbarCtrl', ['$scope', '$location', 'Auth','PinService','$modal',
-    function ($scope, $location, Auth,PinService,$modal) {
+  .controller('NavbarCtrl', ['$scope', '$location', 'Auth','PinService','$modal','toastr',
+    function ($scope, $location, Auth,PinService,$modal,toastr) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
@@ -36,7 +36,7 @@ angular.module('pInterestCloneApp')
             modalInstance.result.then(function(pin) {
               console.log(pin);
               PinService.addPin(pin).then(function(pin){
-                  
+                  toastr.success('Pin added successfully','Success');
               });
             }, function() {
                 // $log.info('Modal dismissed at: ' + new Date());

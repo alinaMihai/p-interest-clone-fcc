@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('pInterestCloneApp', [
+var app=angular.module('pInterestCloneApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -52,3 +52,13 @@ angular.module('pInterestCloneApp', [
       });
     });
   });
+
+ app.constant('toastr', toastr);
+    app.constant('_', window._);
+    app.config(toastrConfig);
+    toastrConfig.$inject = ['toastr'];
+    /* @ngInject */
+    function toastrConfig(toastr) {
+        toastr.options.timeOut = 4000;
+        toastr.options.positionClass = 'toast-top-right';
+    }
