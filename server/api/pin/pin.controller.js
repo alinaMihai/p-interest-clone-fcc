@@ -11,10 +11,12 @@
 
 var _ = require('lodash');
 var Pin = require('./pin.model');
+var User = require('../user/user.model');
 
 // Get list of pins
 exports.index = function(req, res) {
-  Pin.find(function (err, pins) {
+  var query=Pin.find({});
+  query.exec(function (err, pins) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(pins);
   });
@@ -31,10 +33,14 @@ exports.show = function(req, res) {
 
 // Creates a new thing in the DB.
 exports.create = function(req, res) {
-  var user=req.user._id;
-  req.body.user=user;
+  
+  req.body.user=req.user.email;
+
   Pin.create(req.body, function(err, pin) {
     if(err) { return handleError(res, err); }
     return res.status(201).json(pin);
   });
 };
+function handleError(res, err) {
+  return res.status(500).send(err);
+}

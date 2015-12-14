@@ -1,22 +1,14 @@
 'use strict';
 
 angular.module('pInterestCloneApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+  .controller('MainCtrl',['PinService', function (PinService) {
+    var vm=this;
+    vm.pins=PinService.pins;
+    activate();
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });
-
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
-
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-  });
+    function activate(){
+       PinService.getAllPins().then(function(pins){
+          vm.pins=pins;
+       });
+    }
+  }]);

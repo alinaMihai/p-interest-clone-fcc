@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
 
 var PinSchema = new Schema({
   title: String,
-  user: {type: ObjectIdSchema,ref:'User'},
+  user: String,
   imageUrl: String
 });
 
