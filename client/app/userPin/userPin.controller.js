@@ -10,7 +10,8 @@
     /* @ngInject */
     function UserPinCtrl(PinService,$stateParams) {
         var vm = this;
-       vm.userPins=[];
+        vm.userPins=[];
+        vm.handleImageError=handleImageError;
         activate();
 
         ////////////////
@@ -19,6 +20,9 @@
         	PinService.getUserPins($stateParams.user).then(function(pins){
         	 	vm.userPins=pins;
         	});
+        }
+         function handleImageError(pin){
+          pin.imageUrl='../../assets/images/placeholder.gif';
         }
     }
 })();

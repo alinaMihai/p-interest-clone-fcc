@@ -4,11 +4,7 @@ angular.module('pInterestCloneApp')
   .controller('MainCtrl',['PinService','angularGridInstance', function (PinService, angularGridInstance) {
     var vm=this;
     vm.pins=PinService.pins;
-    vm.masonryOptions={
-      "columnWidth":".grid-sizer",
-      "itemSelector":".item",
-      "isFitWidth":true
-    };
+    vm.handleImageError=handleImageError;
     activate();
 
     function activate(){
@@ -19,4 +15,7 @@ angular.module('pInterestCloneApp')
     function refresh(){
          angularGridInstance.gallery.refresh();
     }
+     function handleImageError(pin){
+          pin.imageUrl='../../assets/images/placeholder.gif';
+        }
   }]);

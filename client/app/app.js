@@ -6,7 +6,8 @@ var app=angular.module('pInterestCloneApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'angularGrid'
+  'angularGrid',
+  'ngError'
 
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {

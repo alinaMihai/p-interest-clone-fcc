@@ -12,6 +12,7 @@
         var vm = this;
         vm.pins=[];
         vm.deletePin=deletePin;
+        vm.handleImageError=handleImageError;
         activate();
 
         ////////////////
@@ -28,6 +29,9 @@
                 var index=_.findIndex(vm.myPins,{_id:myPin._id});
                 vm.myPins.splice(index,1);    
             });
+        }
+         function handleImageError(pin){
+           pin.imageUrl='../../assets/images/placeholder.gif';
         }
     }
 })();

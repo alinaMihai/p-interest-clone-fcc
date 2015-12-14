@@ -5,7 +5,7 @@
 			grid-width="300" gutter-size="10" 
 			refresh-on-img-load="false">
 			<li data-ng-repeat="pin in vm.userPins" class="grid">
-				<img ng-src="{{pin.imageUrl}}" alt="pinImage" class="grid-img">
+				<img ng-src="{{pin.imageUrl}}" alt="pinImage" class="grid-img" ng-error="vm.handleImageError(pin)">
 				<p>{{pin.title}}</p>
 				<p>{{pin.user}}</p>
 			</li>

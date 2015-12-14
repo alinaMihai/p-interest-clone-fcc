@@ -59,7 +59,7 @@ angular.module('pInterestCloneApp')
         vm.pin={};
         vm.ok = okHandler;
         vm.cancel = cancelHandler;
-
+      
         function okHandler() {
             $modalInstance.close(vm.pin);
         }
@@ -67,6 +67,7 @@ angular.module('pInterestCloneApp')
         function cancelHandler() {
             $modalInstance.dismiss('cancel');
         }
+
     }
 
 
