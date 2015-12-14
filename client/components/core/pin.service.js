@@ -10,6 +10,7 @@
     /* @ngInject */
     function PinService($http,$q,toastr) {
     	this.pins=[];
+        this.added=undefined;
         this.addPin = addPin;
         this.getAllPins=getAllPins;
         this.getUserPins=getUserPins;
@@ -24,6 +25,7 @@
         	$http.post('/api/pins',pin)
         	.success(function(pin){
  				svc.pins.push(pin);
+                svc.added=pin;
         		deferred.resolve(pin);
                 toastr.success('Pin added successfully','Success');
         	})

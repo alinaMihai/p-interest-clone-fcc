@@ -5,10 +5,10 @@
         .module('pInterestCloneApp')
         .controller('MyPinCtrl', MyPinCtrl);
 
-    MyPinCtrl.$inject = ['PinService'];
+    MyPinCtrl.$inject = ['PinService','$scope'];
 
     /* @ngInject */
-    function MyPinCtrl(PinService) {
+    function MyPinCtrl(PinService,$scope) {
         var vm = this;
         vm.pins=[];
         vm.deletePin=deletePin;
@@ -21,6 +21,13 @@
         	PinService.getMyPins().then(function(pins){
         	    vm.myPins=pins;
         	});
+            $scope.$watch(
+                function(){return PinService.added;},
+                function(newVal,oldVal){
+                    if(newVal!==oldVal){
+                        vm.myPins.push(newVal);
+                    }
+                });
         }
 
         function deletePin(pin){
@@ -33,5 +40,6 @@
          function handleImageError(pin){
            pin.imageUrl='../../assets/images/placeholder.gif';
         }
+
     }
 })();
